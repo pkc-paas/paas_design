@@ -25,7 +25,9 @@ CREATE TABLE saplings(
 	local_name VARCHAR(100) NULL,
 	botanical_name VARCHAR(100) NULL,
 	planted_date DATE NULL,
+	data_collection_date DATE NULL
 	status VARCHAR(50) NULL,
+	description TEXT NULL,
 	details TEXT NULL,
 	first_photos VARCHAR(500) NULL,
 	confirmed BOOLEAN NULL,
@@ -71,10 +73,11 @@ DROP TABLE IF EXISTS observations;
 CREATE TABLE observations(
 	id VARCHAR(36) NOT NULL PRIMARY KEY,
 	sapling_id VARCHAR(36) NULL,
-	photo_id VARCHAR(36) NULL,
+	photo_id VARCHAR(200) NULL,
 	observation_date DATE NULL,
-	details TEXT NULL,
-	status VARCHAR(32) NULL,
+	growth_status VARCHAR(200) NULL,
+	health_status VARCHAR(200) NULL,
+	description VARCHAR(500) NULL,
 	confirmed BOOLEAN NULL,
 	created_on DATETIME NULL,
 	created_by VARCHAR(32) NULL,
@@ -82,9 +85,6 @@ CREATE TABLE observations(
 	modified_by VARCHAR(32) NULL
 );
 CREATE INDEX observations_i1 ON observations (sapling_id);
-CREATE INDEX observations_i2 ON observations (photo_id);
-CREATE INDEX observations_i3 ON observations (photo_id);
-CREATE INDEX observations_i4 ON observations (observation_date);
-CREATE INDEX observations_i5 ON observations (confirmed);
-CREATE INDEX observations_i6 ON observations (status);
+CREATE INDEX observations_i2 ON observations (observation_date);
+CREATE INDEX observations_i3 ON observations (confirmed);
 
